@@ -3,12 +3,14 @@ import JobCard from "./JobCard";
 
 /* Show list of job cards.
  *
+ * Shows list of jobCards that for both JobList and CompanyDetails
+ * 
  */
 
 function JobCardList({ jobs }) {
 
   return (
-      <div className="JobCardList">
+      <div>
         {jobs.map(job => (
             <JobCard
                 key={job.id}

@@ -6,7 +6,10 @@ import LoadingSpinner from "../common/LoadingSpinner";
 
 /* Show page with list of jobs.
  *
- *
+ * Renders all jobs from the API. 
+ * 
+ * If search is used, only jobs with titles matching the search string will appear.
+ * 
  */
 
 function JobList() {

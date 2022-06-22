@@ -4,14 +4,17 @@ import Homepage from "../homepage/Homepage";
 import CompanyList from "../companies/CompanyList";
 import CompanyDetail from "../companies/CompanyDetail";
 import JobList from "../jobs/JobList";
+import LoginForm from "../auth/LoginForm";
+import ProfileForm from "../profile/ProfileForm";
+import SignupForm from "../auth/SignupFrom";
+import PrivateRoute from "./PrivateRoute";
 
 /* Routes for navigation of the site skeleton */
 
-function Routes() {
+function Routes({ login, signup }) {
 
-
-    return (
-        <div className="pt-5">
+  return (
+      <div className="pt-5">
         <Switch>
 
           <Route exact path="/">
@@ -19,32 +22,32 @@ function Routes() {
           </Route>
 
           <Route exact path="/login">
-            Login
+            <LoginForm login={login} />
           </Route>
 
           <Route exact path="/signup">
-            Signup
+            <SignupForm signup={signup} />
           </Route>
 
-          <Route exact path="/companies">
+          <PrivateRoute exact path="/companies">
             <CompanyList />
-          </Route>
+          </PrivateRoute>
 
-          <Route exact path="/jobs">
+          <PrivateRoute exact path="/jobs">
             <JobList />
-          </Route>
+          </PrivateRoute>
 
-          <Route exact path="/companies/:handle">
+          <PrivateRoute exact path="/companies/:handle">
             <CompanyDetail />
-          </Route>
+          </PrivateRoute>
 
-          <Route path="/profile">
-            ProfileForm
-          </Route>
+          <PrivateRoute path="/profile">
+            <ProfileForm />
+          </PrivateRoute>
 
           <Redirect to="/" />
         </Switch>
       </div>
-    )
+  );
 }
 export default Routes;
