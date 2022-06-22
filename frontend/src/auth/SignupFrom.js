@@ -2,15 +2,10 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Alert from "../common/Alert";
 
-/** Signup form.
+/* Signup form.
  *
- * Shows form and manages update to state on changes.
- * On submission:
- * - calls signup function prop
- * - redirects to /companies route
- *
- * Routes -> SignupForm -> Alert
- * Routed as /signup
+ * Shows SignupForm and updates data to state
+ * 
  */
 
 function SignupForm({ signup }) {
@@ -24,17 +19,7 @@ function SignupForm({ signup }) {
   });
   const [formErrors, setFormErrors] = useState([]);
 
-  console.debug(
-      "SignupForm",
-      "signup=", typeof signup,
-      "formData=", formData,
-      "formErrors=", formErrors,
-  );
-
-  /** Handle form submit:
-   *
-   * Calls login func prop and, if successful, redirect to /companies.
-   */
+  /* handles form submission, if successful will redirect to companies. */
 
   async function handleSubmit(evt) {
     evt.preventDefault();
@@ -46,14 +31,14 @@ function SignupForm({ signup }) {
     }
   }
 
-  /** Update form data field */
+  /* Update form data field */
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(data => ({ ...data, [name]: value }));
   }
 
   return (
-      <div className="SignupForm">
+      <div >
         <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
           <h2 className="mb-3">Sign Up</h2>
           <div className="card">

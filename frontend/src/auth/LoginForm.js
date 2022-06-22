@@ -2,15 +2,10 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Alert from "../common/Alert";
 
-/** Login form.
+/* Login form
  *
- * Shows form and manages update to state on changes.
- * On submission:
- * - calls login function prop
- * - redirects to /companies route
- *
- * Routes -> LoginForm -> Alert
- * Routed as /login
+ * Displays the loginForm, handles formData and updates the state
+ * Redirects to companies.
  */
 
 function LoginForm({ login }) {
@@ -21,18 +16,7 @@ function LoginForm({ login }) {
   });
   const [formErrors, setFormErrors] = useState([]);
 
-  console.debug(
-      "LoginForm",
-      "login=", typeof login,
-      "formData=", formData,
-      "formErrors", formErrors,
-  );
-
-  /** Handle form submit:
-   *
-   * Calls login func prop and, if successful, redirect to /companies.
-   */
-
+  /* Handles form submit. If succesful, redirects to companies */
   async function handleSubmit(evt) {
     evt.preventDefault();
     let result = await login(formData);
@@ -43,14 +27,14 @@ function LoginForm({ login }) {
     }
   }
 
-  /** Update form data field */
+  /* Update form data fields */
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(l => ({ ...l, [name]: value }));
   }
 
   return (
-      <div className="LoginForm">
+      <div>
         <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
           <h3 className="mb-3">Log In</h3>
 
