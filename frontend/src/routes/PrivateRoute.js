@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import UserContext from "../auth/UserContext";
 import LoadingSpinner from "../common/LoadingSpinner";
 
